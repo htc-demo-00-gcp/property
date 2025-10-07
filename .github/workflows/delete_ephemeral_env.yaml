@@ -12,9 +12,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Delete environment
-        uses: docker://ghcr.io/humanitec/hctl:latest
+        uses: docker://ghcr.io/humanitec/hctl:1.41.0
         with:
-          args: delete environment ${{ github.event.repository.name }} ephemeral-pr-${{ github.event.pull_request.number }}
+          args: delete environment ${{ github.event.repository.name }} ephemeral-pr-${{ github.event.pull_request.number }} --no-prompt
         env:
           HUMANITEC_AUTH_TOKEN: ${{ secrets.CANYON_DEMO_CANYON_AUTH_TOKEN_PROD }}
           HUMANITEC_ORG: ${{ secrets.CANYON_DEMO_CANYON_ORG }}

@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create environment
-        uses: docker://ghcr.io/humanitec/hctl:latest
+        uses: docker://ghcr.io/humanitec/hctl:1.41.0
         with:
           args: create environment ${{ github.event.repository.name }} ephemeral-pr-${{ github.event.pull_request.number }} --set env_type_id=development
         env:
@@ -60,7 +60,7 @@ jobs:
             --user "$(id -u):$(id -g)" \
             -e HUMANITEC_AUTH_TOKEN="${{ secrets.CANYON_DEMO_CANYON_AUTH_TOKEN_PROD }}" \
             -e HUMANITEC_ORG="${{ secrets.CANYON_DEMO_CANYON_ORG }}" \
-            ghcr.io/humanitec/hctl:latest \
+            ghcr.io/humanitec/hctl:1.41.0 \
             deploy ${{ github.event.repository.name }} ephemeral-pr-${{ github.event.pull_request.number }} ./manifest.yaml --no-prompt --output values.yaml
 
       - name: Set up Python environment
